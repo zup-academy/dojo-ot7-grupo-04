@@ -23,6 +23,9 @@ public class Companhia {
     @ManyToOne
     private Pais pais;
 
+    @Deprecated
+    public Companhia() { }
+
     public Companhia(@NotBlank String nome, @NotNull Pais pais) {
         this.nome = nome;
         this.pais = pais;
