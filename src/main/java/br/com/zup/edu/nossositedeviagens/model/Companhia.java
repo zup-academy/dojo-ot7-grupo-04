@@ -36,6 +36,22 @@ public class Companhia {
         return Objects.equals(id, companhia.id);
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public LocalDateTime getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public Pais getPais() {
+        return pais;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(id);
