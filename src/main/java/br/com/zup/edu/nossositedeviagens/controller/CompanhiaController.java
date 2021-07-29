@@ -26,6 +26,8 @@ public class CompanhiaController {
     private ResponseEntity<?> cadastrar(@RequestBody @Valid CompanhiaRequest request, UriComponentsBuilder uri) {
         Companhia companhia = request.toModel(manager);
 
+        manager.persist(companhia);
+
         URI link = uri.path("/companhias/{id}").buildAndExpand(companhia.getId()).toUri();
         return ResponseEntity.created(link).body(new CompanhiaReponse(companhia));
     }

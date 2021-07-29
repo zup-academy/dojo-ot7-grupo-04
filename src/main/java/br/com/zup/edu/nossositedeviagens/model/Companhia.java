@@ -23,7 +23,7 @@ public class Companhia {
     @ManyToOne
     private Pais pais;
 
-    public Companhia(@NotBlank String nome,@NotNull Pais pais) {
+    public Companhia(@NotBlank String nome, @NotNull Pais pais) {
         this.nome = nome;
         this.pais = pais;
     }
