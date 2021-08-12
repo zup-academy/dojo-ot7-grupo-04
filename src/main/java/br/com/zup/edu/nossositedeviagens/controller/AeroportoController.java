@@ -22,6 +22,6 @@ public class AeroportoController {
     @PostMapping
     @Transactional
     private ResponseEntity<?> cadastrar(@RequestBody @Valid AeroportoRequest request) {
-
+        return ResponseEntity.ok().build();
     }
 }
