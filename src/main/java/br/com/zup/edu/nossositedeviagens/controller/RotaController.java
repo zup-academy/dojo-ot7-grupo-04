@@ -1,6 +1,7 @@
 package br.com.zup.edu.nossositedeviagens.controller;
 
 import br.com.zup.edu.nossositedeviagens.controller.dto.request.RotaRequest;
+import br.com.zup.edu.nossositedeviagens.controller.dto.response.RotaResponse;
 import br.com.zup.edu.nossositedeviagens.model.Rota;
 import br.com.zup.edu.nossositedeviagens.repository.AeroportoRepository;
 import br.com.zup.edu.nossositedeviagens.repository.RotasRepository;
@@ -14,9 +15,10 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.net.URI;
 
 @RestController
-@RequestMapping("rotas")
+@RequestMapping("/rotas")
 public class RotaController {
 
     @Autowired
@@ -28,14 +30,10 @@ public class RotaController {
     @PostMapping
     @Transactional
     private ResponseEntity<?> cadastrar(@RequestBody @Valid RotaRequest request, UriComponentsBuilder builder) {
-        Rota rota = request.toModel(aeroportoRepository);
-
+        Rota rota = request.toModel(aeroportoRepository, rotasRepository);
         rotasRepository.save(rota);
-        //terminar validação do unico aeroporto origem e destino.
 
-
-
-
-        return null;
+        URI uri = builder.path("/rotas/{id}").buildAndExpand(rota.getId()).toUri();
+        return ResponseEntity.created(uri).body(new RotaResponse(rota));
     }
 }

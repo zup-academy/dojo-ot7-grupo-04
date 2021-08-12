@@ -1,6 +1,8 @@
 package br.com.zup.edu.nossositedeviagens.controller.dto.response;
 
-import java.time.LocalDateTime;
+import br.com.zup.edu.nossositedeviagens.model.Rota;
+
+import java.time.Duration;
 
 public class RotaResponse {
     private  Long id;
@@ -11,7 +13,16 @@ public class RotaResponse {
 
     private String aeroportoDestino;
 
-    private LocalDateTime duracao;
+    private Duration duracao;
+
+    public RotaResponse(Rota rota) {
+
+        this.id = rota.getId();
+        this.nomeRota = rota.getNomeRota();
+        this.aeroportoOrigem = rota.getAeroportoOrigem().getNome();
+        this.aeroportoDestino = rota.getAeroportoDestino().getNome();
+        this.duracao = rota.getDuracao();
+    }
 
     public Long getId() {
         return id;
@@ -29,7 +40,7 @@ public class RotaResponse {
         return aeroportoDestino;
     }
 
-    public LocalDateTime getDuracao() {
+    public Duration getDuracao() {
         return duracao;
     }
 }

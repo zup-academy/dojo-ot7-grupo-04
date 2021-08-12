@@ -12,6 +12,7 @@ public class Rota {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
 
+    @NotNull
     private String nomeRota;
 
     @NotNull
@@ -25,6 +26,10 @@ public class Rota {
     @NotNull
     @Positive
     private Duration duracao;
+
+    @Deprecated
+    public Rota() {
+    }
 
     public Rota(String nomeRota, Aeroporto aeroportoOrigem, Aeroporto aeroportoDestino, Duration duracao) {
         this.nomeRota = nomeRota;

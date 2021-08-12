@@ -13,6 +13,7 @@ public class Pais {
     private Long id;
     private String nome;
 
+    @Deprecated
     public Pais() {
     }
 
